@@ -1,0 +1,23 @@
+site_name: 情報科 授業計画
+site_description: 高校情報科（情報Ⅰ・情報Ⅱ）授業計画
+docs_dir: .
+theme:
+  name: material
+  language: ja
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+
+nav:
+  - ホーム: index.md
+  - 2026年度:
+    - 情報Ⅰ:
+      - 年間計画: 2026/informa1/01_年間計画.md
+      - 評価まとめ: 2026/informa1/02_評価まとめ.md
+      - 振り返り: 2026/informa1/03_振り返り.md
+    - 情報Ⅱ:
+      - 年間計画: 2026/informa2/01_年間計画.md
+      - 評価まとめ: 2026/informa2/02_評価まとめ.md
+      - 振り返り: 2026/informa2/03_振り返り.md
