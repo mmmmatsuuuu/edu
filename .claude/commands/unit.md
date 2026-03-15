@@ -16,6 +16,9 @@
    - `docs/YYYY/informaX/NN_単元名/01_単元計画.md`
    - `docs/YYYY/informaX/NN_単元名/02_評価まとめ.md`
    - `docs/YYYY/informaX/NN_単元名/授業/NN_タイトル.md`（授業回数分）
+4. `mkdocs.yml` を更新する
+5. 作成内容を報告してレビューを促す
+6. ユーザーがレビューOKを出したら GitHub にプッシュする
 
 ## 各ファイルの生成ルール
 
@@ -40,16 +43,26 @@
 
 ## mkdocs.yml の更新
 
-`mkdocs.yml` の `nav` セクションに新しい単元を追加する：
+`mkdocs.yml` を Read してから Edit で nav セクションを更新する。
+該当科目のエントリ配下に単元計画と評価まとめのみ追加する（授業ファイルはネストが深くなるため nav には含めない）：
+
 ```yaml
 - NN_単元名:
   - 単元計画: YYYY/informaX/NN_単元名/01_単元計画.md
   - 評価まとめ: YYYY/informaX/NN_単元名/02_評価まとめ.md
-  - 授業:
-    - 01_タイトル: YYYY/informaX/NN_単元名/授業/01_タイトル.md
-    ...
 ```
 
-## 完了後
+授業ファイルへのリンクは `01_単元計画.md` の授業構成テーブルのタイトル列に相対リンクで記載する（テンプレート参照）。
 
-作成したファイルの一覧とパスを報告し、内容のレビューを促す。
+該当科目のエントリが存在しない場合は、`/subject` スキルで先に科目を作成するよう促す。
+
+## 完了後・GitHub へのプッシュ
+
+1. 作成したファイルの一覧とパスを報告し、内容のレビューを促す
+2. ユーザーが「OK」「問題ない」などレビュー完了を伝えたら、以下を実行する：
+   ```bash
+   git add docs/（該当パス）/ mkdocs.yml
+   git commit -m "Add unit: NN_単元名（YYYY 情報X）"
+   git push origin main
+   ```
+3. プッシュ完了後、GitHub Pages のデプロイが自動で走ることを伝える（`.github/workflows/deploy.yml` による）

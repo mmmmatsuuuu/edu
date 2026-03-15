@@ -14,6 +14,9 @@
    - `docs/YYYY/informaX/01_年間計画.md`
    - `docs/YYYY/informaX/02_評価まとめ.md`
    - `docs/YYYY/informaX/03_振り返り.md`
+3. `mkdocs.yml` を更新する
+4. 作成内容を報告してレビューを促す
+5. ユーザーがレビューOKを出したら GitHub にプッシュする
 
 ## 各ファイルの生成ルール
 
@@ -28,6 +31,55 @@
 ### 02_評価まとめ.md・03_振り返り.md
 テンプレートをベースに科目名・年度を埋め、それ以外は空欄のままにする。
 
-## 完了後
+## docs/index.md の更新
 
-作成したファイルの一覧とパスを報告し、内容のレビューを促す。
+`docs/index.md` を Read してから Edit で科目へのリンクを追加する。
+
+年度ベースの場合は `## 年度一覧` セクションに追加：
+```markdown
+- [YYYY年度 情報X](YYYY/informaX/01_年間計画.md)
+```
+
+`docs/pbp/` など年度によらない場合は `## PBP（プロジェクトベース）` セクションを作成して追加：
+```markdown
+## PBP（プロジェクトベース）
+
+- [PBP 情報X](pbp/informaX/01_年間計画.md)
+```
+
+該当セクションがなければ新規に作成する。
+
+## mkdocs.yml の更新
+
+`mkdocs.yml` を Read してから Edit で nav セクションに科目エントリを追加する。
+
+年度ベース（`docs/YYYY/`）の場合、`YYYY年度` セクション配下に追加：
+```yaml
+- YYYY年度:
+  - 情報X:
+    - 年間計画: YYYY/informaX/01_年間計画.md
+    - 評価まとめ: YYYY/informaX/02_評価まとめ.md
+    - 振り返り: YYYY/informaX/03_振り返り.md
+```
+
+`docs/pbp/` など年度によらないディレクトリの場合、対応するセクション配下に追加：
+```yaml
+- PBP（プロジェクトベース）:
+  - 情報X:
+    - 年間計画: pbp/informaX/01_年間計画.md
+    - 評価まとめ: pbp/informaX/02_評価まとめ.md
+    - 振り返り: pbp/informaX/03_振り返り.md
+```
+
+該当セクションが存在しない場合は新規に作成する。
+
+## 完了後・GitHub へのプッシュ
+
+1. 作成したファイルの一覧とパスを報告し、内容のレビューを促す
+2. ユーザーが「OK」「問題ない」などレビュー完了を伝えたら、以下を実行する：
+   ```bash
+   git add docs/（該当パス）/ docs/index.md mkdocs.yml
+   git commit -m "Add subject plan: YYYY 情報X"
+   git push origin main
+   ```
+3. プッシュ完了後、GitHub Pages のデプロイが自動で走ることを伝える（`.github/workflows/deploy.yml` による）
