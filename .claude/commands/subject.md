@@ -9,11 +9,11 @@
 
 ## 作業手順
 
-1. `_template/01_年間計画.md`・`_template/02_評価まとめ.md`・`_template/03_振り返り.md` を読み込む
+1. `docs/_template/01_年間計画.md`・`docs/_template/02_評価まとめ.md`・`docs/_template/03_振り返り.md` を読み込む
 2. 以下のディレクトリ・ファイルを作成する：
-   - `YYYY/informaX/01_年間計画.md`
-   - `YYYY/informaX/02_評価まとめ.md`
-   - `YYYY/informaX/03_振り返り.md`
+   - `docs/YYYY/informaX/01_年間計画.md`
+   - `docs/YYYY/informaX/02_評価まとめ.md`
+   - `docs/YYYY/informaX/03_振り返り.md`
 
 ## 各ファイルの生成ルール
 

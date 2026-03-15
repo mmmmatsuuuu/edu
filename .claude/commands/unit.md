@@ -10,12 +10,12 @@
 
 ## 作業手順
 
-1. `_template/` 配下のテンプレートファイルを読み込む
+1. `docs/_template/` 配下のテンプレートファイルを読み込む
 2. 単元の内容をもとに授業構成を考える（各授業のタイトル・主な学習内容を設計）
 3. 以下のディレクトリ・ファイルを作成する：
-   - `YYYY/informaX/NN_単元名/01_単元計画.md`
-   - `YYYY/informaX/NN_単元名/02_評価まとめ.md`
-   - `YYYY/informaX/NN_単元名/授業/NN_タイトル.md`（授業回数分）
+   - `docs/YYYY/informaX/NN_単元名/01_単元計画.md`
+   - `docs/YYYY/informaX/NN_単元名/02_評価まとめ.md`
+   - `docs/YYYY/informaX/NN_単元名/授業/NN_タイトル.md`（授業回数分）
 
 ## 各ファイルの生成ルール
 

@@ -1,6 +1,6 @@
 site_name: 情報科 授業計画
 site_description: 高校情報科（情報Ⅰ・情報Ⅱ）授業計画
-docs_dir: .
+docs_dir: docs
 theme:
   name: material
   language: ja
