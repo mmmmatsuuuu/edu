@@ -51,3 +51,35 @@ edu/
 
 - `/subject` : 科目ディレクトリと年間計画・評価・振り返りファイルを作成
 - `/unit` : 単元ディレクトリと単元計画・授業ファイルを作成
+- `/lesson` : 既存の単元に授業ファイルを1コマ追加
+
+## Git 運用ルール
+
+作業内容ごとにブランチを切り、main には直接コミットしない。
+
+### ブランチ命名規則
+
+| 作業 | ブランチ名 | 例 |
+|---|---|---|
+| 科目の新規作成 | `add/YYYY-informaX` | `add/2026-informa1` |
+| 単元の新規作成 | `add/YYYY-informaX-NN` | `add/2026-informa1-05` |
+| 授業の単体追加 | `add/YYYY-informaX-NN-lessonMM` | `add/2026-informa1-05-lesson03` |
+| 内容の修正 | `fix/YYYY-informaX-対象` | `fix/2026-informa1-04-unit-plan` |
+| 削除 | `remove/YYYY-informaX-対象` | `remove/2026-informa2` |
+
+### 基本フロー
+
+```bash
+git checkout -b {ブランチ名}   # 作業開始
+# ... ファイル作成・編集 ...
+git add / git commit / git push origin {ブランチ名}
+git checkout main
+git merge {ブランチ名}
+git push origin main
+git branch -d {ブランチ名}
+```
+
+### 修正・削除時の注意
+
+- **修正**：ファイル編集のみ。mkdocs.yml・年間計画のリンクは変更不要な場合が多い
+- **削除**：ファイル削除に加え、mkdocs.yml・index.md・年間計画テーブルのリンクも合わせて削除する

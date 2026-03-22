@@ -9,14 +9,18 @@
 
 ## 作業手順
 
-1. `docs/_template/01_年間計画.md`・`docs/_template/02_評価まとめ.md`・`docs/_template/03_振り返り.md` を読み込む
-2. 以下のディレクトリ・ファイルを作成する：
+1. 以下のコマンドで作業ブランチを作成・切り替える：
+   ```bash
+   git checkout -b add/YYYY-informaX
+   ```
+2. `docs/_template/01_年間計画.md`・`docs/_template/02_評価まとめ.md`・`docs/_template/03_振り返り.md` を読み込む
+3. 以下のディレクトリ・ファイルを作成する：
    - `docs/YYYY/informaX/01_年間計画.md`
    - `docs/YYYY/informaX/02_評価まとめ.md`
    - `docs/YYYY/informaX/03_振り返り.md`
-3. `mkdocs.yml` を更新する
-4. 作成内容を報告してレビューを促す
-5. ユーザーがレビューOKを出したら GitHub にプッシュする
+4. `mkdocs.yml` を更新する
+5. 作成内容を報告してレビューを促す
+6. ユーザーがレビューOKを出したら GitHub にプッシュする
 
 ## 各ファイルの生成ルール
 
@@ -80,6 +84,13 @@
    ```bash
    git add docs/（該当パス）/ docs/index.md mkdocs.yml
    git commit -m "Add subject plan: YYYY 情報X"
-   git push origin main
+   git push origin add/YYYY-informaX
    ```
-3. プッシュ完了後、GitHub Pages のデプロイが自動で走ることを伝える（`.github/workflows/deploy.yml` による）
+3. プッシュ後、main へのマージを案内する：
+   ```bash
+   git checkout main
+   git merge add/YYYY-informaX
+   git push origin main
+   git branch -d add/YYYY-informaX
+   ```
+4. マージ完了後、GitHub Pages のデプロイが自動で走ることを伝える（`.github/workflows/deploy.yml` による）

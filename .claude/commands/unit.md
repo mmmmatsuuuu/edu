@@ -10,15 +10,19 @@
 
 ## 作業手順
 
-1. `docs/_template/` 配下のテンプレートファイルを読み込む
-2. 単元の内容をもとに授業構成を考える（各授業のタイトル・主な学習内容を設計）
-3. 以下のディレクトリ・ファイルを作成する：
+1. 以下のコマンドで作業ブランチを作成・切り替える：
+   ```bash
+   git checkout -b add/YYYY-informaX-NN
+   ```
+2. `docs/_template/` 配下のテンプレートファイルを読み込む
+3. 単元の内容をもとに授業構成を考える（各授業のタイトル・主な学習内容を設計）
+4. 以下のディレクトリ・ファイルを作成する：
    - `docs/YYYY/informaX/NN_単元名/01_単元計画.md`
    - `docs/YYYY/informaX/NN_単元名/02_評価まとめ.md`
    - `docs/YYYY/informaX/NN_単元名/授業/NN_タイトル.md`（授業回数分）
-4. `mkdocs.yml` を更新する
-5. 作成内容を報告してレビューを促す
-6. ユーザーがレビューOKを出したら GitHub にプッシュする
+5. `mkdocs.yml` を更新する
+6. 作成内容を報告してレビューを促す
+7. ユーザーがレビューOKを出したら GitHub にプッシュする
 
 ## 各ファイルの生成ルール
 
@@ -74,6 +78,13 @@
    ```bash
    git add docs/（該当パス）/ mkdocs.yml
    git commit -m "Add unit: NN_単元名（YYYY 情報X）"
-   git push origin main
+   git push origin add/YYYY-informaX-NN
    ```
-3. プッシュ完了後、GitHub Pages のデプロイが自動で走ることを伝える（`.github/workflows/deploy.yml` による）
+3. プッシュ後、main へのマージを案内する：
+   ```bash
+   git checkout main
+   git merge add/YYYY-informaX-NN
+   git push origin main
+   git branch -d add/YYYY-informaX-NN
+   ```
+4. マージ完了後、GitHub Pages のデプロイが自動で走ることを伝える（`.github/workflows/deploy.yml` による）
